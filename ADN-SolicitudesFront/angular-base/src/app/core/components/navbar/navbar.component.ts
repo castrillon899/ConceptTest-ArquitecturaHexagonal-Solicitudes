@@ -9,18 +9,19 @@ import { MenuItem } from '@core/modelo/menu-item';
     border-bottom-width: 1px;
     display: block;
     height: 48px;
-    padding: 0 16px;
+    padding: 0 30px;
   }
 
   nav a {
     color: #8f8f8f;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 48px;
     margin-right: 20px;
     text-decoration: none;
     vertical-align: middle;
     cursor: pointer;
+    font-family: Poppins-Medium ;
   }
 
   nav a.router-link-active {

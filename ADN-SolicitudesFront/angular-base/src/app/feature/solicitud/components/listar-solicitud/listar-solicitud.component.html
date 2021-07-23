@@ -1,29 +1,124 @@
-<p>listar-solicitud works!</p>
-
-<div id="productos">
-    <ul class="productos">
-      <li *ngFor="let item of listaProductos | async">
-        <span>{{item.id}}</span> {{item.descripcion}}
-      </li>
-    </ul>
-  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-4 mt-4" *ngFor="let item of listaProductos | async; index as i">
+            <div class="card tarjetas_sombra">
 
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Country</th>
-      <th scope="col">Area</th>
-      <th scope="col">Population</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of listaProductos | async; index as i">
-      <th scope="row">>{{item.id}}</th>
-     
-      <td>{{item.descripcion}}</td>
-      <td>{{item.descripcion}}</td>
-    </tr>
-    </tbody>
-  </table>
+                <h5 class="card-header mt-0  alert alert-primary" [ngClass]="
+                    item.estado =='EN_PROGRESO' ? 'alert  alert-success' : 
+                    item.estado =='FINALIZADA' ? 'alert  alert-info' : 
+                    item.estado =='CANCELADA'? 'alert  alert-warning' : 'alert  alert-danger'">
+
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <i class="fas fa-lightbulb"></i>
+                            Radicado
+                            {{item.id}}
+                        </div>
+
+                        <div class="estado_solicitud">
+                            <div *ngIf="item.estado =='CREADA'"> <i class="fa fa-exclamation-triangle"
+                                    aria-hidden="true"></i>Sin gestionar</div>
+                            <div *ngIf="item.estado =='EN_PROGRESO'"> <i class="fa fa-check" aria-hidden="true"></i>
+                                Gestionandose</div>
+                            <div *ngIf="item.estado =='CANCELADA'"> <i class="fa fa-check" aria-hidden="true"></i>
+                                Cancelada</div>
+                            <div *ngIf="item.estado =='FINALIZADA'"> <i class="fa fa-check" aria-hidden="true"></i>
+                                Finalizada</div>
+                        </div>
+                    </div>
+                </h5>
+                <i class="fa fa-smile-o" aria-hidden="true"></i>
+                <div class="card-body">
+                    <h5 class="card-title">
+
+
+                        <div class="d-flex flex-column">
+
+                            <div class="d-flex mb-3">
+                                <i class="far fa-address-card" aria-hidden="true"></i>
+                                <div class="d-flex flex-column">
+                                    Usuario asignado: {{item.idUsuarioAsignado}}
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="d-flex  justify-content-between">
+                                    <i class="far fa-address-card" aria-hidden="true"></i>
+                                    <div class="d-flex flex-column">
+                                        Cliente: {{item.idCliente}}
+                                    </div>
+                                </div>
+
+                                <div class="d-flex  justify-content-between">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <div class="d-flex flex-column">
+                                        Cel Cliente: {{item.clienteCelularContacto}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="d-flex mb-3">
+                                <i class="far fa-clock"></i>
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        Fecha tentativa de respuesta:
+                                    </div>
+                                    <div>
+                                        {{item.fechaTentativaDeRespuesta | date:'fullDate'}}
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex mb-3">
+                                <i class="far fa-clock"></i>
+                                <div class="d-flex flex-column">
+
+                                    <div>
+                                        Fecha maxima de respuesta:
+                                    </div>
+                                    <div>
+                                        {{item.fechaTentativaDeRespuesta | date:'fullDate'}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </h5>
+                    <p class="card-text">{{item.descripcion}}</p>
+                    <p class="card-text">{{item.respuestaDeLaSolicitud}}</p>
+                    <div class="row">
+                        <a href="#" class="btn btn-primary col-5">actualizar</a>
+                        <div class="col-2"></div>
+                        <a href="#" class="btn btn-secondary col-5">ver detalle</a>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+
+
+
+                    <div class="d-flex">
+                        <i class="far fa-clock"></i>
+
+                        {{item.fechaActualizacion | date:'fullDate'}}
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,27 +4,27 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-toolbar',
   templateUrl: 'toolbar.component.html',
   styles: [`:host {
-    background-color: #106cc8;
-    color: rgba(255, 255, 255, 0.87);
+    background-color: #fff;
+    color: #004951;
     display: block;
-    height: 48px;
+    height: 70px;
     padding: 0 16px;
+    font-size: 20px;
+    
   }
 
   h1 {
-    display: inline;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: normal;
     letter-spacing: 0.1px;
-    line-height: 48px;
+    margin-left: 10px;  
+    font-family: Poppins-Medium ;
   }
 
   .more {
-    background: url("/assets/svg/more.svg");
-    float: right;
-    height: 24px;
-    margin-top: 12px;
-    width: 24px;
+    height: 70px;
+    margin-top: 2px;
+    width: 140px;
   }`]
 })
 export class ToolbarComponent implements OnInit {

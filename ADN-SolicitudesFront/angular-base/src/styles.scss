@@ -7,3 +7,24 @@
 @import "assets/scss/partials/grids";
 @import "assets/scss/partials/global";
 @import "assets/scss/partials/buttons";
+
+
+
+@font-face {
+    font-family: "Poppins-Regular";
+    src: local("Poppins-Regular"), url(./assets/fonts/Poppins-Light.ttf) format("truetype");
+}
+
+
+@font-face {
+    font-family: "Poppins-Medium";
+    src: local("Poppins-Medium"), url(./assets/fonts/Poppins-Medium.ttf) format("truetype");
+}
+
+
+
+@font-face {
+    font-family: "Poppins-Black";
+    src: local("Poppins-Black"), url(./assets/fonts/Poppins-Black.ttf) format("truetype");
+}
+
