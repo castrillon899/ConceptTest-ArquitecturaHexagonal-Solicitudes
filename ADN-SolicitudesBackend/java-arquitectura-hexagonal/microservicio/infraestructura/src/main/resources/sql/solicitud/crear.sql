@@ -1,0 +1,2 @@
+insert into solicitud (descripcion, tipo_de_solicitud,estado,fecha_creacion,fecha_actualizacion,fecha_tentativa_respuesta,fecha_maxima_respuesta,id_usuario_asignado,id_cliente,cliente_celular_contacto) values
+ (:descripcion, :tipoDeSolicitud, :estado, :fechaCreacion,:fechaActualizacion,:fechaTentativaDeRespuesta,:fechaMaximaDeRespuesta,:idUsuarioAsignado,:idCliente,:clienteCelularContacto)

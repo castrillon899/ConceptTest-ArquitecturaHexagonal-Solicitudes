@@ -1,0 +1,45 @@
+jasypt:
+   encryptor:
+      password: ${jasyptpwd:secretkey}
+      algorithm: PBEWithMD5AndDES
+
+server:
+   port: 8083
+   servlet:
+      context-path: /api/v1
+      session:
+         timeout: 21600s
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    
+    username: sa
+    password: 
+    platform: h2
+    jdbcUrl: jdbc:h2:mem:~/solicitudes
+    driver-class-name: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      poolName: pool
+
+
+logging:
+    level:
+        org:
+            springframework:
+                jdbc:
+                    core: TRACE    
+
+#spring:
+ # datasource:
+  #    driver-class-name: 
+   #   type: com.zaxxer.hikari.HikariDataSource
+   #   jdbcUrl: 
+   #   username: 
+   #   password: 
+   #   hikari:
+   #      poolName: pool
