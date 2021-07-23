@@ -19,6 +19,9 @@
       ],
       "@shared/*": [
         "src/app/shared/*"
+      ],
+      "@solicitud/*": [
+        "src/app/feature/solicitud/*"
       ]
     }
   },

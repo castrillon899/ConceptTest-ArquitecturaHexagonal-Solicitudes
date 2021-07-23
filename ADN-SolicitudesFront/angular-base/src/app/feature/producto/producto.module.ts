@@ -9,6 +9,7 @@ import { SharedModule } from '@shared/shared.module';
 import { ProductoService } from './shared/service/producto.service';
 
 
+
 @NgModule({
   declarations: [
     CrearProductoComponent,
