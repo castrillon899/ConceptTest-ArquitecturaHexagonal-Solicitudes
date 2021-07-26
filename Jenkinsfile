@@ -53,9 +53,9 @@ pipeline {
 		stage('Unit Tests And Coverage') {
 			steps{
 				echo "------------>Unit Tests<------------"
-				sh 'gradle --b ./ADN-SolicitudesBackend/java-arquitectura-hexagonal/build.gradle test'
+				sh 'gradle --b ./ADN-SolicitudesBackend/java-arquitectura-hexagonal/microservicio/build.gradle test'
 				junit '**/build/test-results/test/*.xml' //Agregar los resultados del test a Junit
-			    sh 'gradle --b ./ADN-SolicitudesBackend/java-arquitectura-hexagonal/build.gradle jacocoTestReport'
+			    sh 'gradle --b  ./ADN-SolicitudesBackend/java-arquitectura-hexagonal/microservicio/build.gradle jacocoTestReport'
 			}
 		}
 
@@ -71,7 +71,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo "------------>Build<------------"
-                sh 'gradle --b ./ADN-SolicitudesBackend/java-arquitectura-hexagonal/build.gradle build -x test' //Construir sin tarea test que se ejecutó previamente
+                sh 'gradle --b  ./ADN-SolicitudesBackend/java-arquitectura-hexagonal/microservicio/build.gradle build -x test' //Construir sin tarea test que se ejecutó previamente
 			}
 		}
 	}
