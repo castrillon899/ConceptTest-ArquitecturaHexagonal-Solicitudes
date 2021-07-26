@@ -1,9 +1,15 @@
 spring:
-   datasource:
-      driver-class-name: org.h2.Driver
-      jdbcUrl: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
-      username: sa
-      password:
-      hikari:
-         poolName: pool
-
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    
+    username: sa
+    password: 
+    platform: h2
+    jdbcUrl: jdbc:h2:mem:~/solicitudes
+    driver-class-name: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      poolName: pool
