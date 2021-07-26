@@ -25,3 +25,20 @@ create table solicitud (
  primary key (id)
 );
 
+
+create table role (
+ id int(11) not null auto_increment,
+ nombre varchar(100) not null,
+ primary key (id)
+);
+
+
+create table role_usuario (
+ id int(11) not null auto_increment,
+ id_usuario int(11) not null,
+ id_role int(11) not null,
+ primary key (id)
+);
+
+
+

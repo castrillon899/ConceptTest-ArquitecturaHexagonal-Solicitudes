@@ -40,6 +40,13 @@
                             <div class="d-flex mb-3">
                                 <i class="far fa-address-card" aria-hidden="true"></i>
                                 <div class="d-flex flex-column">
+                                    Tipo: {{item.tipoDeSolicitud}}
+                                </div>
+                            </div>
+
+                            <div class="d-flex mb-3">
+                                <i class="far fa-address-card" aria-hidden="true"></i>
+                                <div class="d-flex flex-column">
                                     Usuario asignado: {{item.idUsuarioAsignado}}
                                 </div>
                             </div>
@@ -55,7 +62,7 @@
                                 <div class="d-flex  justify-content-between">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     <div class="d-flex flex-column">
-                                        Cel Cliente: {{item.clienteCelularContacto}}
+                                        Contacto Cliente: {{item.clienteCelularContacto}}
                                     </div>
                                 </div>
                             </div>
@@ -90,32 +97,25 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
-
                     </h5>
                     <p class="card-text">{{item.descripcion}}</p>
-                    <p class="card-text">{{item.respuestaDeLaSolicitud}}</p>
-                    <div class="row">
-                        <a href="#" class="btn btn-primary col-5">actualizar</a>
-                        <div class="col-2"></div>
-                        <a href="#" class="btn btn-secondary col-5">ver detalle</a>
+
+                    <div class="alert  alert-success">
+                        <p class="card-text">Respuesta al cliente:</p>
+                        <p class="card-text">{{item.respuestaDeLaSolicitud}}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <i class="far fa-edit tarjetas_opciones alert  alert-warning"><a href="#">Actualizar</a></i>
+
+                        <i class="fas fa-trash-alt tarjetas_opciones alert  alert-danger"><a href="#">Borrar</a></i>
                     </div>
                 </div>
-
                 <div class="card-footer">
-
-
-
                     <div class="d-flex">
                         <i class="far fa-clock"></i>
-
                         {{item.fechaActualizacion | date:'fullDate'}}
-
-
-
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@ package com.ceiba.usuario.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.usuario.adaptador.dao.MapeoUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,59 +11,73 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RepositorioUsuarioMysql implements RepositorioUsuario {
 
-    private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+	private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="usuario", value="crear")
-    private static String sqlCrear;
+	@SqlStatement(namespace = "usuario", value = "crear")
+	private static String sqlCrear;
 
-    @SqlStatement(namespace="usuario", value="actualizar")
-    private static String sqlActualizar;
+	@SqlStatement(namespace = "usuario", value = "actualizar")
+	private static String sqlActualizar;
 
-    @SqlStatement(namespace="usuario", value="eliminar")
-    private static String sqlEliminar;
+	@SqlStatement(namespace = "usuario", value = "eliminar")
+	private static String sqlEliminar;
 
-    @SqlStatement(namespace="usuario", value="existe")
-    private static String sqlExiste;
+	@SqlStatement(namespace = "usuario", value = "existe")
+	private static String sqlExiste;
 
-    @SqlStatement(namespace="usuario", value="existeExcluyendoId") 
-    private static String sqlExisteExcluyendoId;
+	@SqlStatement(namespace = "usuario", value = "existeExcluyendoId")
+	private static String sqlExisteExcluyendoId;
 
-    public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
-        this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
-    }
+	@SqlStatement(namespace = "usuario", value = "buscarUsuarioParaGestionDeSolicitud")
+	private static String sqlBuscarUsuarioParaGestionDeLaSolicitud;
 
-    @Override
-    public Long crear(Usuario usuario) {
-        return this.customNamedParameterJdbcTemplate.crear(usuario, sqlCrear);
-    }
+	public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+		this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
+	}
 
-    @Override
-    public void eliminar(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
+	@Override
+	public Long crear(Usuario usuario) {
+		return this.customNamedParameterJdbcTemplate.crear(usuario, sqlCrear);
+	}
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
-    }
+	@Override
+	public void eliminar(Long id) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("id", id);
 
-    @Override
-    public boolean existe(String nombre) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", nombre);
+		this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+	}
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
-    }
+	@Override
+	public boolean existe(String nombre) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("nombre", nombre);
 
-    @Override
-    public void actualizar(Usuario usuario) {
-        this.customNamedParameterJdbcTemplate.actualizar(usuario, sqlActualizar);
-    }
+		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,
+				paramSource, Boolean.class);
+	}
 
-    @Override
-    public boolean existeExcluyendoId(Long id, String nombre) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-        paramSource.addValue("nombre", nombre);
+	@Override
+	public void actualizar(Usuario usuario) {
+		this.customNamedParameterJdbcTemplate.actualizar(usuario, sqlActualizar);
+	}
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
-    }
+	@Override
+	public boolean existeExcluyendoId(Long id, String nombre) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("id", id);
+		paramSource.addValue("nombre", nombre);
+
+		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
+				.queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
+	}
+
+	@Override
+	public Usuario buscarUsuarioParaGestionDeLaSolicitud(String tipoSolicitud) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("tipoSolicitud", tipoSolicitud);
+		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
+				.queryForObject(sqlBuscarUsuarioParaGestionDeLaSolicitud, paramSource, new MapeoUsuario());
+
+	}
 }

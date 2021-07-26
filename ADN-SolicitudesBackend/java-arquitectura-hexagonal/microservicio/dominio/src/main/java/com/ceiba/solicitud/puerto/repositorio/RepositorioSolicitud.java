@@ -21,6 +21,9 @@ public interface RepositorioSolicitud {
      * @param id
      */
     void eliminar(Long id);
+    
+    
+   
 
     
   

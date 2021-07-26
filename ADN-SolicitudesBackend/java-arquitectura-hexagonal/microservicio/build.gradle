@@ -1,8 +1,25 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'org.owasp:dependency-check-gradle:6.2.2'
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version  "${springBootVersion}"
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
 
 allprojects {
     repositories {
         mavenCentral() 
     }
+	apply plugin: 'org.owasp.dependencycheck'
 
 	project.ext.apachecommons = [
 			"commons-io:commons-io:2.6",
@@ -15,7 +32,7 @@ allprojects {
 	project.ext.junit5 = ["org.junit.jupiter:junit-jupiter-api:5.3.1"]
 	project.ext.junit4 = ["junit:junit:4.12"]
 	project.ext.mockito = ['org.mockito:mockito-all:1.10.19']
-	project.ext.lombok = ["org.projectlombok:lombok:1.18.20"]
+	project.ext.lombok = ["org.projectlombok:lombok:1.18.10"]
 	
 	project.ext.springboottest = ["org.springframework.boot:spring-boot-starter-test:${springBootVersion}"]
 	project.ext.springbootweb = ["org.springframework.boot:spring-boot-starter-web:${springBootVersion}"]
@@ -40,20 +57,7 @@ allprojects {
 	project.ext.flywaytest = ["org.flywaydb.flyway-test-extensions:flyway-spring-test:5.2.1"]
 
 	project.ext.h2 = ["com.h2database:h2:1.4.194"]
-	project.ext.mysql = ["mysql:mysql-connector-java:8.0.23"]
 }
-
-buildscript {
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
-}
-
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
 
 group = 'com.ceiba'
 version = '0.0.1-SNAPSHOT'
@@ -65,19 +69,13 @@ repositories {
 
 dependencies {
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
-
 	configurations {
     	runtime.exclude module: 'spring-boot-starter-tomcat'
     	compile.exclude module: 'spring-boot-starter-tomcat'
 	}
 
-	compile project.ext.springbootweb
+	implementation project.ext.springbootweb
 	runtimeOnly project.ext.springdevtools
-	
-	runtimeOnly project.ext.mysql
-	runtimeOnly project.ext.h2
 	
 	implementation project.ext.springbootundertow
 	implementation project.ext.flyway

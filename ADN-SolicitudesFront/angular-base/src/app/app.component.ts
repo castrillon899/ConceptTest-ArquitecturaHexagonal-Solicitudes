@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'app-base';
   public itemsMenu: MenuItem[] = [
     { url: '/home', nombre: 'inicio' },
-    { url: '/producto', nombre: 'producto' },
+    //{ url: '/producto', nombre: 'producto' },
     { url: '/solicitud', nombre: 'solicitud' }
     
   ];

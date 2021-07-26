@@ -5,21 +5,20 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 import com.ceiba.infraestructura.jdbc.MapperResult;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-
+import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import org.springframework.jdbc.core.RowMapper;
 
-public class MapeoUsuario implements RowMapper<Usuario>, MapperResult {
+public class MapeoDTOUsuario implements RowMapper<DtoUsuario>, MapperResult {
 
     @Override
-    public Usuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public DtoUsuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         Long id = resultSet.getLong("id");
         String nombre = resultSet.getString("nombre");
         String clave = resultSet.getString("clave");
         LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
 
-        return new Usuario(id,nombre,clave,fecha);
+        return new DtoUsuario(id,nombre,clave,fecha);
     }
 
 }

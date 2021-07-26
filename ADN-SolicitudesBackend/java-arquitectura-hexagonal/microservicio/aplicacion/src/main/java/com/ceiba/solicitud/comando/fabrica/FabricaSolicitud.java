@@ -15,7 +15,7 @@ public class FabricaSolicitud {
 		// create an LocalDateTime object
 
 		return new Solicitud(comandoUsuario.getId(), comandoUsuario.getDescripcion(),
-				comandoUsuario.getTipoDeSolicitud(), comandoUsuario.getEstado(), LocalDateTime.now(),
+				comandoUsuario.getTipoDeSolicitud(), "CREADA", LocalDateTime.now(),
 				LocalDateTime.now(), comandoUsuario.getIdCliente(), comandoUsuario.getClienteCelularContacto()
 
 		);

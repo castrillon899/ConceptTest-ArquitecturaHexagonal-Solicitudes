@@ -36,4 +36,12 @@ public interface RepositorioUsuario {
      */
     boolean existeExcluyendoId(Long id,String nombre);
 
+    
+    /**
+     * Permite buscar un usuario que tenga un rol deacuerdo al tipo de solicitud para que la pueda gestionar
+     * @param nombre
+     * @return si existe o no
+     */
+	Usuario buscarUsuarioParaGestionDeLaSolicitud(String tipoSolicitud);
+
 }
