@@ -4,8 +4,12 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 import java.time.LocalDateTime;
 
+import com.ceiba.solicitud.modelo.dto.DtoSolicitud;
+
+import lombok.Builder;
 import lombok.Getter;
 
+//@Builder
 @Getter
 public class Solicitud {
 
@@ -28,7 +32,8 @@ public class Solicitud {
 	private Long idCliente;
 	private Long clienteCelularContacto;
 
-	public Solicitud(Long id, String descripcion, String tipoDeSolicitud, String estado, LocalDateTime fechaCreacion,LocalDateTime fechaActualizacion, Long idCliente, Long clienteCelularContacto) {
+	public Solicitud(Long id, String descripcion, String tipoDeSolicitud, String estado, LocalDateTime fechaCreacion,
+			LocalDateTime fechaActualizacion, Long idCliente, Long clienteCelularContacto) {
 		validarObligatorio(descripcion, SE_DEBE_INGRESAR_EL_NOMBRE_DE_SOLICITUD);
 		validarObligatorio(tipoDeSolicitud, SE_DEBE_INGRESAR_EL_TIPO_DE_SOLICITUD);
 		validarObligatorio(estado, SE_DEBE_INGRESAR_EL_ESTADO_SOLICITUD);
@@ -39,9 +44,16 @@ public class Solicitud {
 		this.tipoDeSolicitud = tipoDeSolicitud;
 		this.estado = estado;
 		this.fechaCreacion = fechaCreacion;
-		this.fechaActualizacion=fechaActualizacion;
-		this.idCliente=idCliente;
-        this.clienteCelularContacto=clienteCelularContacto;
+		this.fechaActualizacion = fechaActualizacion;
+		this.idCliente = idCliente;
+		this.clienteCelularContacto = clienteCelularContacto;
+	}
+
+	public void validarSolicitud() {
+		validarObligatorio(descripcion, SE_DEBE_INGRESAR_EL_NOMBRE_DE_SOLICITUD);
+		validarObligatorio(tipoDeSolicitud, SE_DEBE_INGRESAR_EL_TIPO_DE_SOLICITUD);
+		validarObligatorio(estado, SE_DEBE_INGRESAR_EL_ESTADO_SOLICITUD);
+		validarObligatorio(fechaCreacion, SE_DEBE_INGRESAR_LA_FECHA_DE_CREACION);
 	}
 
 	public void setIdUsuarioAsignado(Long idUsuario) {

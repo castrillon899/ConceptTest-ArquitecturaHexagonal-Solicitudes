@@ -76,8 +76,11 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 	public Usuario buscarUsuarioParaGestionDeLaSolicitud(String tipoSolicitud) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("tipoSolicitud", tipoSolicitud);
-		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
+		Usuario usuario = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
 				.queryForObject(sqlBuscarUsuarioParaGestionDeLaSolicitud, paramSource, new MapeoUsuario());
+		
+	     System.out.println(usuario);
+		 return usuario;
 
 	}
 }

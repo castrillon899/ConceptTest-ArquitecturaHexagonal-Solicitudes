@@ -26,9 +26,12 @@ public class MapeoSolicitud implements RowMapper<DtoSolicitud>, MapperResult {
 		Long idCliente = resultSet.getLong("id_cliente");
 		Long clienteCelular = resultSet.getLong("cliente_celular_contacto");
 
-		return new DtoSolicitud(id, descripcion, tipoDeSolicitud, estado, fechaCreacion, fechaActualizacion,
-				fechaTentativaDeRespuesta, fechaMaximaRespuesta, idUsuarioAsignado, respuestaDeLaSolicitud, idCliente,
-				clienteCelular);
+		return DtoSolicitud.builder().id(id).descripcion(descripcion).tipoDeSolicitud(tipoDeSolicitud).estado(estado)
+				.fechaActualizacion(fechaActualizacion).fechaCreacion(fechaCreacion)
+				.fechaTentativaDeRespuesta(fechaTentativaDeRespuesta).fechaMaximaDeRespuesta(fechaMaximaRespuesta)
+				.idUsuarioAsignado(idUsuarioAsignado).respuestaDeLaSolicitud(respuestaDeLaSolicitud)
+				.idCliente(idCliente).clienteCelularContacto(clienteCelular).build();
+
 	}
 
 }

@@ -8,7 +8,7 @@ insert into usuario(id,nombre,clave,fecha_creacion) values(4,'Felicidad Henao','
 
 insert into role values (1,'QUEJA');
 
-insert into role values (2,'RECLAMO');
+insert into role values (2,'SOLICITUD');
 
 insert into role_usuario values (1,1,1);
 
