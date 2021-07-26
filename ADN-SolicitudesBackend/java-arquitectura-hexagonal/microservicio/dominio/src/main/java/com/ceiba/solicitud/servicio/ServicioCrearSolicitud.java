@@ -1,7 +1,6 @@
 package com.ceiba.solicitud.servicio;
 
 import static com.ceiba.dominio.CalcularFechaRespuestaSolicitud.carcularFechaDeRespuestaALaSolicitud;
-import static com.ceiba.dominio.ValidadorArgumento.validarValido;
 import java.time.LocalDateTime;
 import com.ceiba.solicitud.modelo.dto.TipoSolicitudEnum;
 import com.ceiba.solicitud.modelo.entidad.Solicitud;
@@ -10,7 +9,6 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 public class ServicioCrearSolicitud {
 
-	private static final String EL_TIPO_DE_SOLITUD_NO_VALIDA = "El tipo de solicitud no es valida";
 
 	private final RepositorioSolicitud repositorioSolicitud;
 
@@ -22,7 +20,7 @@ public class ServicioCrearSolicitud {
 	}
 
 	public Long ejecutar(Solicitud solicitud) {
-		validarTipoDeSolicitud(solicitud);
+		solicitud.validarSolicitud();
 
 		Long idUsuario = buscarUsuarioQueRespondaLaSolicitud(solicitud);
 		solicitud.setIdUsuarioAsignado(idUsuario);
@@ -57,9 +55,6 @@ public class ServicioCrearSolicitud {
 
 	}
 
-	private void validarTipoDeSolicitud(Solicitud solicitud) {
-		validarValido(solicitud.getTipoDeSolicitud(), TipoSolicitudEnum.class, EL_TIPO_DE_SOLITUD_NO_VALIDA);
-	}
 
 	private Long buscarUsuarioQueRespondaLaSolicitud(Solicitud solicitud) {
 		return this.repositorioUsuario.buscarUsuarioParaGestionDeLaSolicitud(solicitud.getTipoDeSolicitud()).getId();

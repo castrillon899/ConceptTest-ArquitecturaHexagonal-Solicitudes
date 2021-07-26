@@ -64,7 +64,11 @@ public class SolicitudTestDataBuilder {
 
 
 	public Solicitud build() {
-		return new Solicitud(id, descripcion, tipoDeSolicitud, estado, fechaCreacion, fechaActualizacion, idCliente,
-				clienteCelularContacto);
+		
+		return Solicitud.builder().id(id).descripcion(descripcion)
+				.tipoDeSolicitud(tipoDeSolicitud).estado(estado).fechaCreacion(fechaCreacion)
+				.fechaActualizacion(fechaActualizacion).idCliente(idCliente)
+				.clienteCelularContacto(clienteCelularContacto).build();
+		
 	}
 }
