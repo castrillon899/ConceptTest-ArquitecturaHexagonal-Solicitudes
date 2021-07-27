@@ -10,8 +10,8 @@ import com.ceiba.solicitud.modelo.dto.TipoSolicitudEnum;
 import lombok.Builder;
 import lombok.Getter;
 
-@Builder
 @Getter
+@Builder
 public class Solicitud {
 
 	private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_SOLICITUD = "Se debe ingresar el nombre de la solicitud";
