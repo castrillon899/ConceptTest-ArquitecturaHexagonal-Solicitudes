@@ -37,7 +37,7 @@ public class ServicioActualizarSolicitudTest {
 	
 	
 	@Test
-	public void  validarExistenciaDeLaSolicitudPreviaTest() {
+	public void  validarExistenciaDeLaSolicitudCuandoExisteTest() {
 
 		// arrange
 		Solicitud solicitud = new SolicitudTestDataBuilder().solicitudTipoQueja().build();
