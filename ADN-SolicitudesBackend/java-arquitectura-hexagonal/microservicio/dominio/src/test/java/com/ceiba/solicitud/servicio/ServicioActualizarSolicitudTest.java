@@ -37,7 +37,7 @@ public class ServicioActualizarSolicitudTest {
 	
 	
 	@Test
-	public void  generarErrorDeActualizacionDeSolicitudPorQueNoExisteTest() {
+	public void  validarExistenciaDeLaSolicitudPreviaTest() {
 
 		// arrange
 		Solicitud solicitud = new SolicitudTestDataBuilder().solicitudTipoQueja().build();
@@ -54,6 +54,9 @@ public class ServicioActualizarSolicitudTest {
 
 
 	}
+	
+	
+	
 	
 	
 	
