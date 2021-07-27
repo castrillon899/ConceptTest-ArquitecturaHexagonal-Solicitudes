@@ -37,13 +37,11 @@ public class ServicioCrearSolicitud {
 	}
 
 	private int calcularDiasTentativosDeRespuestaALaSolicitud(Solicitud solicitud) {
-
 		if (solicitud.getTipoDeSolicitud().equals(TipoSolicitudEnum.QUEJA.toString())) {
 			return 1;
 		} else {
 			return 3;
 		}
-
 	}
 
 	private int calcularDiasMaximosDeRespuestaALaSolicitud(Solicitud solicitud) {

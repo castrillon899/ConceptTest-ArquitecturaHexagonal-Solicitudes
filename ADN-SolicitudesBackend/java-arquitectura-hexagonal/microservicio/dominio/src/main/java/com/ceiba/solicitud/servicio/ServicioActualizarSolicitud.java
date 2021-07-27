@@ -6,7 +6,7 @@ import com.ceiba.solicitud.puerto.repositorio.RepositorioSolicitud;
 
 public class ServicioActualizarSolicitud {
 
-	private static final String LA_SOLICITUD_NO_EXISTE_EN_EL_SISTEMA = "La solicitud no existe para hacer actualizada en el sistema";;
+	private static final String LA_SOLICITUD_NO_EXISTE_EN_EL_SISTEMA = "La solicitud no existe para hacer actualizada en el sistema";
 
 	private final RepositorioSolicitud repositorioSolicitud;
 

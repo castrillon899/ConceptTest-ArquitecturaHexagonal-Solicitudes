@@ -1,11 +1,7 @@
 select u.*
 from usuario u
-where id in (
-
-
-               
-
-          select id_usuario 
+where id in (             
+        select id_usuario 
         from 
 			(   
 					select id_usuario, cantidadSolicitudes  
