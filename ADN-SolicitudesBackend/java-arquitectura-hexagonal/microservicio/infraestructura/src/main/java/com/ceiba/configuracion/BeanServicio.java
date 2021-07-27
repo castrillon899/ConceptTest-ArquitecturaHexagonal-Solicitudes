@@ -1,6 +1,7 @@
 package com.ceiba.configuracion;
 
 import com.ceiba.solicitud.puerto.repositorio.RepositorioSolicitud;
+import com.ceiba.solicitud.servicio.ServicioActualizarSolicitud;
 import com.ceiba.solicitud.servicio.ServicioCrearSolicitud;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
@@ -31,6 +32,11 @@ public class BeanServicio {
     @Bean
     public ServicioCrearSolicitud servicioCrearSolicitud(RepositorioSolicitud repositorioSolicitud,RepositorioUsuario repositorioUsuario) {
         return new ServicioCrearSolicitud(repositorioSolicitud,repositorioUsuario);
+    }
+    
+    @Bean
+    public ServicioActualizarSolicitud servicioActualizarSolicitud(RepositorioSolicitud repositorioUsuario) {
+		return new ServicioActualizarSolicitud(repositorioUsuario);
     }
 
 }

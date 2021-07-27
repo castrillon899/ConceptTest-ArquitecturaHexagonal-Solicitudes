@@ -1,5 +1,5 @@
-update usuario
-set nombre = :nombre,
-	clave = :clave,
-	fecha_creacion = :fechaCreacion
-where id = :id
+update solicitud
+set     respuesta_solicitud=:respuesta,
+	estado= :estado,
+        fecha_actualizacion=:fechaActualizacion       
+where id = :id;

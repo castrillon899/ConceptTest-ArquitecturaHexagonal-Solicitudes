@@ -20,15 +20,13 @@ public class FabricaSolicitud {
 				.fechaActualizacion(now).idCliente(comandoUsuario.getIdCliente())
 				.clienteCelularContacto(comandoUsuario.getClienteCelularContacto()).build();
 
-		/*
-		 * 
-		 * return new Solicitud(comandoUsuario.getId(), comandoUsuario.getDescripcion(),
-		 * comandoUsuario.getTipoDeSolicitud(), "CREADA", LocalDateTime.now(),
-		 * LocalDateTime.now(), comandoUsuario.getIdCliente(),
-		 * comandoUsuario.getClienteCelularContacto());
-		 */
-
 	}
 
-//Long id, String descripcion, String tipoDeSolicitud, String estado, LocalDateTime fechaCreacion
+	public Solicitud actualizar(ComandoSolicitud comandoUsuario) {
+
+		LocalDateTime now = LocalDateTime.now();
+		return Solicitud.builder().id(comandoUsuario.getId()).estado(comandoUsuario.getEstado())
+				.respuestaDeLaSolicitud(comandoUsuario.getRespuestaSolicitud()).fechaActualizacion(now).build();
+	}
+
 }

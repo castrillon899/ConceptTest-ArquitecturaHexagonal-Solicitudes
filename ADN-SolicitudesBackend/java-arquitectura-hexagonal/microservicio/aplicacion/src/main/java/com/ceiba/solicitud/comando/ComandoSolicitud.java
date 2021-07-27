@@ -18,6 +18,6 @@ public class ComandoSolicitud{
 	private String estado;
 	private Long idCliente;
 	private Long clienteCelularContacto;
-	
+	private String respuestaSolicitud;
     
 }

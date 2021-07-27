@@ -31,6 +31,8 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 	@SqlStatement(namespace = "usuario", value = "buscarUsuarioParaGestionDeSolicitud")
 	private static String sqlBuscarUsuarioParaGestionDeLaSolicitud;
 
+
+	
 	public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
 		this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
 	}
@@ -81,4 +83,6 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 		
 
 	}
+
+
 }

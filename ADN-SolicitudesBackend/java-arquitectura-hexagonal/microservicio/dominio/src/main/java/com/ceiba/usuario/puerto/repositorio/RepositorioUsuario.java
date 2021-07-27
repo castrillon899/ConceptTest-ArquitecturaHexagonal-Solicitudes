@@ -43,5 +43,9 @@ public interface RepositorioUsuario {
      * @return si existe o no
      */
 	Usuario buscarUsuarioParaGestionDeLaSolicitud(String tipoSolicitud);
+	
+	
+
+    
 
 }

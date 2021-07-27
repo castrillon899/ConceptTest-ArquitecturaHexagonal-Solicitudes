@@ -21,7 +21,8 @@ public class RepositorioSolicitudMysql implements RepositorioSolicitud {
 	@SqlStatement(namespace = "solicitud", value = "eliminar")
 	private static String sqlEliminar;
 
-
+	@SqlStatement(namespace = "solicitud", value = "existeSolicitudPorId")
+	private static String sqlExisteSolicitudPorId;
 
 	public RepositorioSolicitudMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
 		this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -36,17 +37,27 @@ public class RepositorioSolicitudMysql implements RepositorioSolicitud {
 	public void eliminar(Long id) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("id", id);
-
 		this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
 	}
 
 	@Override
-	public void actualizar(Solicitud usuario) {
-		// TODO Auto-generated method stub
-		
+	public boolean existeSolicitud(Long id) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("id", id);
+		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
+				.queryForObject(sqlExisteSolicitudPorId, paramSource, Boolean.class);
+
 	}
 
-	
-
+	@Override
+	public Long actualizar(Solicitud solicitud) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("id", solicitud.getId());
+		paramSource.addValue("respuesta", solicitud.getRespuestaDeLaSolicitud());
+		paramSource.addValue("estado", solicitud.getEstado());
+		paramSource.addValue("fechaActualizacion", solicitud.getFechaActualizacion());
+		this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizar, paramSource);
+		return solicitud.getId();
+	}
 
 }
