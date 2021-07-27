@@ -21,7 +21,7 @@ public class SolicitudTestDataBuilder {
 		id = 1L;
 		descripcion = "text";
 		tipoDeSolicitud = "QUEJA";
-		estado = "CREADO";
+		estado = "CREADA";
 		fechaCreacion = LocalDateTime.now();
 		fechaActualizacion = LocalDateTime.now();
 
@@ -36,7 +36,7 @@ public class SolicitudTestDataBuilder {
 		id = 1L;
 		descripcion = "text";
 		tipoDeSolicitud = "SOLICITUD";
-		estado = "CREADO";
+		estado = "CREADA";
 		fechaCreacion = LocalDateTime.now();
 		fechaActualizacion = LocalDateTime.now();
 
@@ -52,7 +52,7 @@ public class SolicitudTestDataBuilder {
 		id = 1L;
 		descripcion = "text";
 		tipoDeSolicitud = "ERRORTIPO";
-		estado = "CREADO";
+		estado = "CREADA";
 		fechaCreacion = LocalDateTime.now();
 		fechaActualizacion = LocalDateTime.now();
 
