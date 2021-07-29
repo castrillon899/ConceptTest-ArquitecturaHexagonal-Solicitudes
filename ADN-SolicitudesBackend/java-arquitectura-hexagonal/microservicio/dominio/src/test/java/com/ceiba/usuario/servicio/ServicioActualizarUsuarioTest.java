@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.mockito.Mockito;
-
 import com.ceiba.BasePrueba;
 
 public class ServicioActualizarUsuarioTest {

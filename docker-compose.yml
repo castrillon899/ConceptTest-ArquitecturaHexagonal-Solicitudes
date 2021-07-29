@@ -1,0 +1,48 @@
+version: "3"
+services:
+  h2:
+    image: 1000kit/h2:latest
+    network_mode: bridge
+    container_name: h2
+    volumes:
+      - h2-data:/opt/h2-data
+    expose:
+      - 8181
+      - 1521
+    ports:
+      - 8181:8181
+      - 1521:1521
+    restart: unless-stopped
+#Backend
+  solicitudes-service:
+      image: solicitudes-service:0.0.1
+      network_mode: bridge
+      container_name: solicitudes-service
+      expose: 
+        - 8083
+      ports:
+        - 8083:8083
+      restart: unless-stopped
+      depends_on:
+        - h2
+      links:
+        - h2
+#Frontend
+  solicitudes-frontend:
+    image: solicitudes-front:0.0.1
+    network_mode: bridge
+    container_name: solicitudes-front
+    expose:
+      - 80
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - solicitudes-service
+      - h2
+    links:
+      - solicitudes-service
+      - h2
+
+volumes:
+  h2-data:

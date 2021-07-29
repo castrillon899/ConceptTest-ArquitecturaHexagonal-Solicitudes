@@ -4,9 +4,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ceiba.ApplicationMock;
-import com.ceiba.solicitud.comando.ComandoSolicitud;
-import com.ceiba.solicitud.servicio.testdatabuilder.ComandoSolicitudTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.ceiba.ApplicationMock;
+import com.ceiba.solicitud.comando.ComandoSolicitud;
+import com.ceiba.solicitud.servicio.testdatabuilder.ComandoSolicitudTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
