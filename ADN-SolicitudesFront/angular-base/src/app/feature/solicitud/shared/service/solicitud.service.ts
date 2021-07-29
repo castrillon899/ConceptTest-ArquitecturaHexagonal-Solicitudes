@@ -13,13 +13,13 @@ export class SolicitudService {
     return this.http.doGet<Solicitud[]>(`${environment.endpoint}/api/v1/solicitudes`, this.http.optsName('consultar solicitudes'));
   }
 
-  public guardar(producto: Solicitud) {
-    return this.http.doPost<Solicitud, boolean>(`${environment.endpoint}/productos`, producto,
-      this.http.optsName('crear/actualizar productos'));
+  public crear(solicitud: Solicitud) {
+    return this.http.doPost<Solicitud, any>(`${environment.endpoint}/api/v1/solicitudes`, solicitud,
+      this.http.optsName('crear/actualizar solicitudes'));
   }
 
-  public eliminar(producto: Solicitud) {
-    return this.http.doDelete<boolean>(`${environment.endpoint}/productos/${producto.id}`,
-      this.http.optsName('eliminar productos'));
+  public eliminar(producto: any) {
+    return this.http.doDelete<number>(`${environment.endpoint}/api/v1/solicitudes/${producto.id}`,
+      this.http.optsName('eliminar solicitudes'));
   }
 }

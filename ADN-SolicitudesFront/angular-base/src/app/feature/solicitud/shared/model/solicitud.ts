@@ -1,5 +1,5 @@
-
 export class Solicitud {
+
     id: string;
     descripcion: string;
     tipoDeSolicitud: string;
