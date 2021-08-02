@@ -6,6 +6,7 @@ import { CrearSolicitudComponent } from './components/crear-solicitud/crear-soli
 import { BorrarSolicitudComponent } from './components/borrar-solicitud/borrar-solicitud.component';
 import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { ListarSolicitudComponent } from './components/listar-solicitud/listar-solicitud.component';
+import { EditarSolicitudComponent } from './components/editar-solicitud/editar-solicitud.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'borrar',
         component: BorrarSolicitudComponent
+      }
+      ,
+      {
+        path: 'editar',
+        component: EditarSolicitudComponent
       }
     ]
   }

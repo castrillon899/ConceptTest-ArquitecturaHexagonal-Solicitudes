@@ -107,9 +107,11 @@
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <i class="far fa-edit tarjetas_opciones alert  alert-warning"><a href="#">Actualizar</a></i>
-
-                        <i class="fas fa-trash-alt tarjetas_opciones alert  alert-danger"><a href="#">Borrar</a></i>
+                        <i class="far fa-edit tarjetas_opciones alert  alert-warning"
+                            (click)="navegarAEditar(item)">Editar</i>
+                        <i *ngIf="item.estado!=='CANCELADA'"
+                            class="fas fa-trash-alt tarjetas_opciones alert  alert-danger"
+                            (click)="cancelarSolicitud(item)">Cancelar</i>
                     </div>
                 </div>
                 <div class="card-footer">

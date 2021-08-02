@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { tiposDeSolicitud } from '../../../../../../src/assets/json/tipos_solicitud'
 import Swal from 'sweetalert2';
-//import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { //ActivatedRoute,
   Router
 } from '@angular/router';
@@ -18,8 +17,6 @@ import { //ActivatedRoute,
   styleUrls: ['./crear-solicitud.component.scss']
 })
 export class CrearSolicitudComponent implements OnInit {
-
-
 
 
   envioForm: FormGroup;
@@ -41,6 +38,9 @@ export class CrearSolicitudComponent implements OnInit {
   }
 
   crear() {
+    console.log('intentando crear');
+    console.log(this.envioForm.value);
+
     Swal.fire({
       title: 'Estas seguro de crear la solicitud',
       icon: 'warning',

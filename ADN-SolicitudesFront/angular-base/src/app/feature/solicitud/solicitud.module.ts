@@ -6,6 +6,7 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { SolicitudRoutingModule } from './solicitud-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { SolicitudService } from './shared/service/solicitud.service';
+import { EditarSolicitudComponent } from './components/editar-solicitud/editar-solicitud.component';
 
 
 
@@ -15,7 +16,8 @@ import { SolicitudService } from './shared/service/solicitud.service';
     CrearSolicitudComponent,
     ListarSolicitudComponent,
     BorrarSolicitudComponent,
-    SolicitudComponent
+    SolicitudComponent,
+    EditarSolicitudComponent
   ],
   imports: [
     SolicitudRoutingModule,

@@ -1,4 +1,4 @@
-[
+export const estadosDeSolicitud= [
     {
         "id": 1,
         "estado": "CREADA",
@@ -7,7 +7,7 @@
     {
         "id": 2,
         "estado": "EN_PROGRESO",
-        "nombre": "gestionandose"
+        "nombre": "Gestionandose"
     },
     {
         "id": 3,

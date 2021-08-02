@@ -1,6 +1,6 @@
 export class Solicitud {
 
-    id: string;
+    id: number;
     descripcion: string;
     tipoDeSolicitud: string;
     estado: string;
@@ -8,15 +8,17 @@ export class Solicitud {
     fechaActualizacion: string;
     fechaTentativaDeRespuesta: string;
     fechaMaximaDeRespuesta: string;
-    idUsuarioAsignado: string;
+    idUsuarioAsignado: number;
     respuestaDeLaSolicitud: string;
-    idCliente: string;
-    clienteCelularContacto: string;
+    idCliente: number;
+    clienteCelularContacto: number;
+    respuestaSolicitud: string;
+    
 
 
 
     constructor(
-        id: string,
+        id: number,
         descripcion: string,
         tipoDeSolicitud: string,
         estado: string,
@@ -24,10 +26,11 @@ export class Solicitud {
         fechaActualizacion: string,
         fechaTentativaDeRespuesta: string,
         fechaMaximaDeRespuesta: string,
-        idUsuarioAsignado: string,
+        idUsuarioAsignado: number,
         respuestaDeLaSolicitud: string,
-        idCliente: string,
-        clienteCelularContacto: string
+        idCliente: number,
+        clienteCelularContacto: number,
+        respuestaSolicitud: string,
     ) {
         this.id = id
         this.descripcion = descripcion
@@ -41,6 +44,7 @@ export class Solicitud {
         this.respuestaDeLaSolicitud = respuestaDeLaSolicitud
         this.idCliente = idCliente
         this.clienteCelularContacto = clienteCelularContacto
+        this.respuestaSolicitud = respuestaSolicitud;
     }
 
 }
