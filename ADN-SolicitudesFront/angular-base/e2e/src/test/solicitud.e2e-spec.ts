@@ -19,14 +19,6 @@ describe('workspace-project Solicitud', () => {
 
 
 
-
-    it('Deberia listar solicit', () => {
-        page.navigateTo();
-        navBar.clickSolicitud();
-        solicitud.clickBotonListarSolicitudes();
-        //   expect( solicitud.contarSolicitudes()).toBe(solicitud.contarSolicitudes());
-    });
-
     it('Deberia crear Solicitud', () => {
         const ID_CLIENTE = '001';
         const CELULAR = '001';
@@ -45,8 +37,6 @@ describe('workspace-project Solicitud', () => {
 
         expect(solicitud.obtenerTextoSweetAlert()).toContain('Se creo el radicado');
     });
-
-
 
 
     it('Deberia Actualizar solicitud', () => {
@@ -68,6 +58,15 @@ describe('workspace-project Solicitud', () => {
         expect(solicitud.obtenerTextoSweetAlert()).toContain('Se actualizado el radicado');
 
     });
+
+
+    
+    it('Deberia listar solicit', () => {
+        page.navigateTo();
+        navBar.clickSolicitud();
+        solicitud.clickBotonListarSolicitudes();
+    });
+
 
 
 
