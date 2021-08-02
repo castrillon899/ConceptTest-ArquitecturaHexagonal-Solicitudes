@@ -1,9 +1,10 @@
-import { browser} from 'protractor';
+import { browser } from 'protractor';
 import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
 import { SolicitudPage } from '../page/solicitud/solicitud.po';
 
 describe('workspace-project Solicitud', () => {
+
     let page: AppPage;
     let navBar: NavbarPage;
     let solicitud: SolicitudPage;
@@ -15,11 +16,15 @@ describe('workspace-project Solicitud', () => {
         browser.driver.manage().window().maximize();
     });
 
+
+
+
+
     it('Deberia listar solicit', () => {
         page.navigateTo();
         navBar.clickSolicitud();
         solicitud.clickBotonListarSolicitudes();
-        expect( solicitud.contarSolicitudes()).toBe(solicitud.contarSolicitudes());
+        //   expect( solicitud.contarSolicitudes()).toBe(solicitud.contarSolicitudes());
     });
 
     it('Deberia crear Solicitud', () => {
@@ -40,6 +45,30 @@ describe('workspace-project Solicitud', () => {
 
         expect(solicitud.obtenerTextoSweetAlert()).toContain('Se creo el radicado');
     });
+
+
+
+
+    it('Deberia Actualizar solicitud', () => {
+        const RESPUESTA_SOLICITUD = 'ESTO ES UNA ACTUALIZACION DESDE e2e';
+        let date: Date = new Date();
+
+        page.navigateTo();
+        navBar.clickSolicitud();
+        solicitud.clickBotonListarSolicitudes();
+
+        solicitud.clickEditarPrimeraSolicitud();
+        solicitud.clickEditarPrimeraSolicitud();
+
+
+        solicitud.ingresarRespuestaSolicitud(RESPUESTA_SOLICITUD + date);
+        solicitud.clickBotonActualizar();
+        solicitud.clickBotonOK();
+        solicitud.clickBotonActualizarModal();
+        expect(solicitud.obtenerTextoSweetAlert()).toContain('Se actualizado el radicado');
+
+    });
+
 
 
 });

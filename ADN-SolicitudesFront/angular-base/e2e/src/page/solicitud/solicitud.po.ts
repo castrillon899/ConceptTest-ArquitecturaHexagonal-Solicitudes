@@ -5,14 +5,25 @@ export class SolicitudPage {
     private linkListarSolicitudes = element(by.id('linkListarSolicitudes'));
     private linkCrearSolicitud = element(by.id('linkCrearSolicitud'));
     private inputPrimerCliente = element.all(by.tagName('option')).first();
-    private inputIdCliente= element(by.id('idCliente'));
-    private inputClienteCelularContacto= element(by.id('clienteCelularContacto'));
-    private inputTipoDeSolicitud= element(by.id('tipoDeSolicitud'));
-    private inputDescripcion= element(by.id('descripcion'));   
+    private inputIdCliente = element(by.id('idCliente'));
+    private inputRespuestaSolicitud = element(by.id('respuestaSolicitud'));
+    private inputClienteCelularContacto = element(by.id('clienteCelularContacto'));
+    private inputTipoDeSolicitud = element(by.id('tipoDeSolicitud'));
+    private inputDescripcion = element(by.id('descripcion'));
     private botonCrear = element(by.buttonText('Crear Solicitud'));
+    private botonActualizar = element(by.buttonText('Actualizar solicitud'));
     private botonOkVentanaModal = element(by.buttonText('Si, crealo'));
+    private botonActualizadoVentanaModal = element(by.buttonText('Si, actualizar'));
     private textoSweetAlert = element(by.id('swal2-title'));
-    private listaSolicitudes= element.all(by.css('app-root table tbody tr'));
+    private botonEditarPrimerSolicitud = element.all(by.css('.btn-editar-solicitud')).first();
+
+
+
+
+    async ingresarRespuestaSolicitud(respuestaSolicitud) {
+        await this.inputRespuestaSolicitud.sendKeys(respuestaSolicitud);
+    }
+
 
 
     async ingresarIdCliente(idProducto) {
@@ -41,17 +52,23 @@ export class SolicitudPage {
         await this.linkCrearSolicitud.click();
     }
 
+    async clickEditarPrimeraSolicitud() {
+
+        await this.botonEditarPrimerSolicitud.click();
+    }
+
     async clickSeleccionarPrimerCliente() {
         await this.inputPrimerCliente.click();
     }
-  
-    async contarSolicitudes() {
-        return this.listaSolicitudes.count();
-    }
-   
+
     async clickBotonCrear() {
         await this.botonCrear.click();
     }
+
+    async clickBotonActualizar() {
+        await this.botonActualizar.click();
+    }
+
 
     obtenerTextoSweetAlert() {
         return this.textoSweetAlert.getText() as Promise<string>;
@@ -60,4 +77,9 @@ export class SolicitudPage {
     async clickBotonOK() {
         await this.botonOkVentanaModal.click();
     }
+
+    async clickBotonActualizarModal() {
+        await this.botonActualizadoVentanaModal.click();
+    }
+
 }

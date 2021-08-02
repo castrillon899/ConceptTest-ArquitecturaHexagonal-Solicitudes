@@ -5,11 +5,11 @@ export class NavbarPage {
    
     linkSolicitud = element(by.xpath('/html/body/app-root/app-navbar/nav/a[2]'));
    
-
     async clickSolicitud() {
         await this.linkSolicitud.click();
     }
 
-
+    
+    
 
 }
