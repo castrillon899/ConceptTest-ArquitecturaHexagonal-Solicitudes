@@ -102,7 +102,9 @@ export class EditarSolicitudComponent implements OnInit {
       tipoDeSolicitud: new FormControl(this.solicitudServices.solicitudActiva.tipoDeSolicitud, [Validators.required]),
       descripcion: new FormControl(this.solicitudServices.solicitudActiva.descripcion, [Validators.required]),
       estado: new FormControl(this.solicitudServices.solicitudActiva.estado,),
-      respuestaSolicitud: new FormControl(this.solicitudServices.solicitudActiva.respuestaDeLaSolicitud,)
+      respuestaSolicitud: new FormControl(this.solicitudServices.solicitudActiva.respuestaDeLaSolicitud,),
+      idUsuarioAsignado: new FormControl(this.solicitudServices.solicitudActiva.idUsuarioAsignado,)
+      
     });
   }
 

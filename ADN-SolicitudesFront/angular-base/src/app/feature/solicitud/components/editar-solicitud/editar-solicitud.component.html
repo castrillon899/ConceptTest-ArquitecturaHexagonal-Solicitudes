@@ -12,9 +12,8 @@
                     <label>#Radicado:</label>
                 </div>
                 <div class="col-sm-8">
-                    <input validar type="number" id="id" name="id"
-                        placeholder="Ingrese el numero del cliente" class="form-control" formControlName="id"
-                        autocomplete="off" readonly="readonly">
+                    <input validar type="number" id="id" name="id" placeholder="Ingrese el numero del cliente"
+                        class="form-control" formControlName="id" autocomplete="off" readonly="readonly">
                 </div>
             </div>
 
@@ -38,6 +37,19 @@
                         formControlName="clienteCelularContacto" autocomplete="off" readonly="readonly">
                 </div>
             </div>
+
+
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>usuario asignado:</label>
+                </div>
+                <div class="col-sm-8">
+                    <input validar type="number" id="idUsuarioAsignado" name="idUsuarioAsignado"
+                        placeholder="Usuario asignado al caso" class="form-control"
+                        formControlName="idUsuarioAsignado" autocomplete="off" readonly="readonly">
+                </div>
+            </div>
+            
 
             <div class="row form-group">
                 <div class="col-sm-4">
@@ -94,7 +106,8 @@
                         solicitud</button>
                 </div>
                 <div class="col-sm-3 col-12">
-                    <button type="reset" class="btn btn-danger btn-lg btn-block">Cancelar</button>
+                    <button type="button" class="btn btn-danger btn-lg btn-block"
+                        (click)="irAListarSolicitudes()">Cancelar</button>
                 </div>
                 <div class="col-sm-3 col-12">
                 </div>
