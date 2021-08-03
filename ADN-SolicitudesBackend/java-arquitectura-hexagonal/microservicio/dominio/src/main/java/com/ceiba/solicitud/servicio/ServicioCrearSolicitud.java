@@ -20,8 +20,6 @@ public class ServicioCrearSolicitud {
 	}
 
 	public Long ejecutar(Solicitud solicitud) {
-		solicitud.validarSolicitud();
-
 		Long idUsuario = buscarUsuarioQueRespondaLaSolicitud(solicitud);
 		solicitud.setIdUsuarioAsignado(idUsuario);
 

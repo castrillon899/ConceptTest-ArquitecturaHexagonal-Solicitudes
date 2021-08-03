@@ -16,21 +16,8 @@ public class ServicioCrearSolicitudTest {
 
 	@Test
 	public void validarTipoDeSolicitudInvalidaTest() {
-
-		// arrange
-		Solicitud solicitud = new SolicitudTestDataBuilder().solicitudTipoSolitudInvalida().build();
-		Usuario usuario = new UsuarioTestDataBuilder().build();
-		RepositorioSolicitud repositorioSolicitud = Mockito.mock(RepositorioSolicitud.class);
-		RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-
-		Mockito.when(repositorioUsuario.buscarUsuarioParaGestionDeLaSolicitud(Mockito.anyObject())).thenReturn(usuario);
-		Mockito.when(repositorioSolicitud.crear(Mockito.anyObject())).thenReturn(1L);
-
-		ServicioCrearSolicitud servicioCrearSolicitud = new ServicioCrearSolicitud(repositorioSolicitud,
-				repositorioUsuario);
-
-		// act - assert
-		BasePrueba.assertThrows(() -> servicioCrearSolicitud.ejecutar(solicitud), ExcepcionValorInvalido.class,
+		// arrange- act - assert
+		BasePrueba.assertThrows(() -> new SolicitudTestDataBuilder().solicitudTipoSolitudInvalida().build(), ExcepcionValorInvalido.class,
 				"El tipo de solicitud no es valida");
 
 	}

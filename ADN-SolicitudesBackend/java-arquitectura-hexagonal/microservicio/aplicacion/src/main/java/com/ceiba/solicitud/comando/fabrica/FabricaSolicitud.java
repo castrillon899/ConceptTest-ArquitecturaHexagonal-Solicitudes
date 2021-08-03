@@ -13,20 +13,16 @@ public class FabricaSolicitud {
 	private static final String CREADA = "CREADA";
 
 	public Solicitud crear(ComandoSolicitud comandoUsuario) {
-
 		LocalDateTime now = LocalDateTime.now();
-		return Solicitud.builder().id(comandoUsuario.getId()).descripcion(comandoUsuario.getDescripcion())
-				.tipoDeSolicitud(comandoUsuario.getTipoDeSolicitud()).estado(CREADA).fechaCreacion(now)
-				.fechaActualizacion(now).idCliente(comandoUsuario.getIdCliente())
-				.clienteCelularContacto(comandoUsuario.getClienteCelularContacto()).build();
-
+		return new Solicitud(comandoUsuario.getId(), comandoUsuario.getDescripcion(),
+				comandoUsuario.getTipoDeSolicitud(), CREADA, now, now, comandoUsuario.getIdCliente(),
+				comandoUsuario.getClienteCelularContacto());
 	}
 
 	public Solicitud actualizar(ComandoSolicitud comandoUsuario) {
-
 		LocalDateTime now = LocalDateTime.now();
-		return Solicitud.builder().id(comandoUsuario.getId()).estado(comandoUsuario.getEstado())
-				.respuestaDeLaSolicitud(comandoUsuario.getRespuestaSolicitud()).fechaActualizacion(now).build();
+		return new Solicitud(comandoUsuario.getId(), comandoUsuario.getEstado(), now,
+				comandoUsuario.getRespuestaSolicitud());
 	}
 
 }

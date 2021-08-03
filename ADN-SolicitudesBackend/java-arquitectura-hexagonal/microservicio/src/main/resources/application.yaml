@@ -4,7 +4,7 @@ jasypt:
       algorithm: PBEWithMD5AndDES
 
 server:
-   port: 8083
+   port: 8084
    servlet:
       context-path: /solicitudes/api/v1
       session:

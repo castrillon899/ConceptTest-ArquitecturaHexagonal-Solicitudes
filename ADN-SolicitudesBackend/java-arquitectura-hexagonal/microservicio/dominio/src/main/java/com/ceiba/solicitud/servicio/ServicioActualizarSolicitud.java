@@ -15,7 +15,6 @@ public class ServicioActualizarSolicitud {
 	}
 
 	public Long ejecutar(Solicitud solicitud) {
-		solicitud.validarActualizacion();
 		boolean existeSolicitud = repositorioSolicitud.existeSolicitud(solicitud.getId());
 		if (existeSolicitud) {
 			repositorioSolicitud.actualizar(solicitud);
