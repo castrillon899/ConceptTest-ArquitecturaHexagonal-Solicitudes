@@ -7,11 +7,10 @@ import { HomeComponent } from '@home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]  },
   { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) },
-  { path: 'solicitud', loadChildren: () => import('@solicitud/solicitud.module').then(mod => mod.SolicitudModule) }
-  
+  { path: 'solicitud', loadChildren: () => import('@solicitud/solicitud.module').then(mod => mod.SolicitudModule) },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

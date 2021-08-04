@@ -8,12 +8,11 @@ export interface Options {
 }
 @Injectable()
 export class HttpService {
-
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
 
   public createDefaultOptions(): Options {
     return {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
   }
 
@@ -33,24 +32,30 @@ export class HttpService {
     if (opts) {
       opts = {
         params: opts.params || defaultOpts.params,
-        headers: opts.headers || defaultOpts.headers
+        headers: opts.headers || defaultOpts.headers,
       };
 
       if (!opts.headers.get('Content-Type')) {
-        opts.headers = opts.headers.set('Content-Type', defaultOpts.headers.get('Content-Type'));
+        opts.headers = opts.headers.set(
+          'Content-Type',
+          defaultOpts.headers.get('Content-Type')
+        );
       }
     }
 
     return opts || defaultOpts;
   }
 
-
   public doGet<T>(serviceUrl: string, opts?: Options): Observable<T> {
     const ropts = this.createOptions(opts);
     return this.http.get<T>(serviceUrl, ropts);
   }
 
-  public doPost<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
+  public doPost<T, R>(
+    serviceUrl: string,
+    body: T,
+    opts?: Options
+  ): Observable<R> {
     const ropts = this.createOptions(opts);
 
     return this.http.post<R>(serviceUrl, body, ropts);
@@ -62,19 +67,28 @@ export class HttpService {
     return this.http.delete<R>(serviceUrl, ropts);
   }
 
-
-  public doPut<T,R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
+  public doPut<T, R>(
+    serviceUrl: string,
+    body: T,
+    opts?: Options
+  ): Observable<R> {
     const ropts = this.createOptions(opts);
-
     return this.http.put<R>(serviceUrl, body, ropts);
   }
 
-  public doGetParameters<T>(serviceUrl: string, parametros: HttpParams, opts?: Options): Observable<T> {
+  public doGetParameters<T>(
+    serviceUrl: string,
+    parametros: HttpParams,
+    opts?: Options
+  ): Observable<T> {
     const ropts = this.createOptions(opts);
-    const options = parametros !== null ? {
-      headers: ropts.headers,
-      params: parametros
-    } as Options : ropts;
+    const options =
+      parametros !== null
+        ? ({
+            headers: ropts.headers,
+            params: parametros,
+          } as Options)
+        : ropts;
 
     return this.http.get<T>(serviceUrl, options);
   }

@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./borrar-solicitud.component.scss']
 })
 export class BorrarSolicitudComponent implements OnInit {
-
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }

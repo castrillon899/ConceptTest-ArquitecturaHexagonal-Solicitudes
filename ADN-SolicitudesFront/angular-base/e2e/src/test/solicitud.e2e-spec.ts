@@ -41,7 +41,7 @@ describe('workspace-project Solicitud', () => {
 
     it('Deberia Actualizar solicitud', () => {
         const RESPUESTA_SOLICITUD = 'ESTO ES UNA ACTUALIZACION DESDE e2e';
-        let date: Date = new Date();
+        const date: Date = new Date();
 
         page.navigateTo();
         navBar.clickSolicitud();
@@ -59,15 +59,9 @@ describe('workspace-project Solicitud', () => {
 
     });
 
-
-    
     it('Deberia listar solicit', () => {
         page.navigateTo();
         navBar.clickSolicitud();
         solicitud.clickBotonListarSolicitudes();
     });
-
-
-
-
 });

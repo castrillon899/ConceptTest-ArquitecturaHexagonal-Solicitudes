@@ -7,9 +7,7 @@ import { SolicitudRoutingModule } from './solicitud-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { SolicitudService } from './shared/service/solicitud.service';
 import { EditarSolicitudComponent } from './components/editar-solicitud/editar-solicitud.component';
-
-
-
+import { HttpService } from '@core/services/http.service';
 
 @NgModule({
   declarations: [
@@ -17,16 +15,10 @@ import { EditarSolicitudComponent } from './components/editar-solicitud/editar-s
     ListarSolicitudComponent,
     BorrarSolicitudComponent,
     SolicitudComponent,
-    EditarSolicitudComponent
+    EditarSolicitudComponent,
   ],
-  imports: [
-    SolicitudRoutingModule,
-    SharedModule
-  ],
-  
-  providers: [SolicitudService]
- 
+  imports: [SolicitudRoutingModule, SharedModule],
+
+  providers: [HttpService, SolicitudService],
 })
-export class SolicitudModule { }
-
-
+export class SolicitudModule {}

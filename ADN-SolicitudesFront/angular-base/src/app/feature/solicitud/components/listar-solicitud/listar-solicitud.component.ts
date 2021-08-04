@@ -3,21 +3,22 @@ import { Solicitud } from '@solicitud/shared/model/solicitud';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { //ActivatedRoute,
-  Router
+import {
+  Router,
 } from '@angular/router';
 
 @Component({
   selector: 'app-listar-solicitud',
   templateUrl: './listar-solicitud.component.html',
-  styleUrls: ['./listar-solicitud.component.scss']
+  styleUrls: ['./listar-solicitud.component.scss'],
 })
 export class ListarSolicitudComponent implements OnInit {
-
-
   public listaProductos: Observable<Solicitud[]>;
 
-  constructor(protected solicitudService: SolicitudService, protected router: Router) { }
+  constructor(
+    private solicitudService: SolicitudService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.listaProductos = this.solicitudService.consultar();
@@ -31,26 +32,28 @@ export class ListarSolicitudComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, cancelarlo',
-      cancelButtonText: 'no, no lo quiero hacer!!'
+      cancelButtonText: 'no, no lo quiero hacer!!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.solicitudService.eliminar(solicitud).subscribe((response) => {
-          console.log(response)
-          Swal.fire({
-            icon: 'success',
-            title: `Se cancelo correctamente`
-          });
-        }, (e) => {
-          console.log(e)
-          Swal.fire({
-            icon: 'error',
-            title: e.error ? e.error.mensaje : e.statusText
-          });
-        });
+        this.solicitudService.eliminar(solicitud).subscribe(
+          (response) => {
+            console.log(response);
+            Swal.fire({
+              icon: 'success',
+              title: `Se cancelo correctamente`,
+            });
+          },
+          (e) => {
+            console.log(e);
+            Swal.fire({
+              icon: 'error',
+              title: e.error ? e.error.mensaje : e.statusText,
+            });
+          }
+        );
       }
       this.irAListarSolicitudes();
-    })
-
+    });
   }
 
   irAListarSolicitudes() {
@@ -61,5 +64,4 @@ export class ListarSolicitudComponent implements OnInit {
     this.solicitudService.solicitudActiva = solicitud;
     this.router.navigateByUrl('/solicitud/editar');
   }
-
 }
