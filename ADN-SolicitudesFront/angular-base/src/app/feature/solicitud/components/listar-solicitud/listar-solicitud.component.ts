@@ -39,7 +39,7 @@ export class ListarSolicitudComponent implements OnInit {
           (response) => {
             Swal.fire({
               icon: 'success',
-              title: `Se cancelo correctamente`,
+              title: `Se cancelo correctamente ${response}`,
             });
           },
           (e) => {

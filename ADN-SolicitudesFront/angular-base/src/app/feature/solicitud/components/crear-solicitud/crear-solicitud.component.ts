@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-solicitud',
   templateUrl: './crear-solicitud.component.html',
-  styleUrls: ['./crear-solicitud.component.scss'],
 })
 export class CrearSolicitudComponent implements OnInit {
   envioForm: FormGroup;

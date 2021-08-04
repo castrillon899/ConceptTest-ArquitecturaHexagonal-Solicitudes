@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-editar-solicitud',
   templateUrl: './editar-solicitud.component.html',
-  styleUrls: ['./editar-solicitud.component.scss'],
 })
 export class EditarSolicitudComponent implements OnInit {
   envioForm: FormGroup;

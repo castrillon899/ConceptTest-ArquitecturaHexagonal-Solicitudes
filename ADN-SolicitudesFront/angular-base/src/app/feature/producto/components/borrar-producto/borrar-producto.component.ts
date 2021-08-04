@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-borrar-producto',
-  templateUrl: './borrar-producto.component.html',
-  styleUrls: ['./borrar-producto.component.scss']
+  templateUrl: './borrar-producto.component.html'
 })
 export class BorrarProductoComponent implements OnInit {
 
