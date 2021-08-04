@@ -37,14 +37,12 @@ export class ListarSolicitudComponent implements OnInit {
       if (result.isConfirmed) {
         this.solicitudService.eliminar(solicitud).subscribe(
           (response) => {
-            console.log(response);
             Swal.fire({
               icon: 'success',
               title: `Se cancelo correctamente`,
             });
           },
           (e) => {
-            console.log(e);
             Swal.fire({
               icon: 'error',
               title: e.error ? e.error.mensaje : e.statusText,

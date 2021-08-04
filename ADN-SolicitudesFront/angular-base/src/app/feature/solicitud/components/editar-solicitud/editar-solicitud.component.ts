@@ -61,7 +61,6 @@ export class EditarSolicitudComponent implements OnInit {
             }, 1000);
           },
           (e) => {
-            console.log(e);
             Swal.fire({
               icon: 'error',
               title: e.error ? e.error.mensaje : e.statusText,
