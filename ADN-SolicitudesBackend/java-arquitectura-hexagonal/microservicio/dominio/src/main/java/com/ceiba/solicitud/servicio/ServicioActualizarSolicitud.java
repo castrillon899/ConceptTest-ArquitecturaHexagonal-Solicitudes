@@ -16,12 +16,11 @@ public class ServicioActualizarSolicitud {
 
 	public Long ejecutar(Solicitud solicitud) {
 		boolean existeSolicitud = repositorioSolicitud.existeSolicitud(solicitud.getId());
-		if (existeSolicitud) {
-			repositorioSolicitud.actualizar(solicitud);
-			return solicitud.getId();
-		} else {
+		if (!existeSolicitud) {
 			throw new ExcepcionValorInvalido(LA_SOLICITUD_NO_EXISTE_EN_EL_SISTEMA);
-		}
+		} 
+		repositorioSolicitud.actualizar(solicitud);
+		return solicitud.getId();
 
 	}
 
