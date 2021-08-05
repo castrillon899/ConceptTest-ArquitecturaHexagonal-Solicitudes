@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Solicitud } from '@solicitud/shared/model/solicitud';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
-import {
-  Router,
-} from '@angular/router';
+import { Router } from '@angular/router';
+import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
 @Component({
   selector: 'app-listar-solicitud',
@@ -17,7 +15,8 @@ export class ListarSolicitudComponent implements OnInit {
 
   constructor(
     private solicitudService: SolicitudService,
-    private router: Router
+    private router: Router,
+    private modalNotificaciones: ModalNotificaciones
   ) {}
 
   ngOnInit() {
@@ -25,33 +24,42 @@ export class ListarSolicitudComponent implements OnInit {
   }
 
   cancelarSolicitud(solicitud: Solicitud) {
-    Swal.fire({
-      title: `Estas seguro de eliminar la solicitud # ${solicitud.id}`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, cancelarlo',
-      cancelButtonText: 'no, no lo quiero hacer!!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.solicitudService.eliminar(solicitud).subscribe(
-          (response) => {
-            Swal.fire({
-              icon: 'success',
-              title: `Se cancelo correctamente ${response}`,
-            });
-          },
-          (e) => {
-            Swal.fire({
-              icon: 'error',
-              title: e.error ? e.error.mensaje : e.statusText,
-            });
-          }
-        );
-      }
-      this.irAListarSolicitudes();
-    });
+    this.modalNotificaciones
+      .modalConConfirmacion(
+        `Estas seguro de cancelar la solicitud # ${solicitud.id}`,
+        'warning',
+        true,
+        '#3085d6',
+        '#d33',
+        'Si, crealo',
+        'no, Cancelar!!'
+      )
+      .then((respuestaConfirmacion) => {
+        if (respuestaConfirmacion) {
+          this.solicitudService.eliminar(solicitud).subscribe(
+            (response) => {
+              if (response.valor) {
+                this.modalNotificaciones.modalBasico(
+                  `Se cancelo correctamente ${solicitud.id}`,
+                  'success'
+                );
+
+                setTimeout(() => {
+                  this.irAListarSolicitudes();
+                }, 1000);
+              }
+            },
+            (e) => {
+              this.modalNotificaciones.modalBasico(
+                `No se puedo cancelar la notificacion ${
+                  e.error ? e.error.mensaje : e.statusText
+                }`,
+                'warning'
+              );
+            }
+          );
+        }
+      });
   }
 
   irAListarSolicitudes() {

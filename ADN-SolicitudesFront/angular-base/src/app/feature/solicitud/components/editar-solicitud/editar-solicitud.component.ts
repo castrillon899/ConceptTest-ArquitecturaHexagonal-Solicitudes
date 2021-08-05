@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { tiposDeSolicitud } from '../../../../../../src/assets/json/tipos_solicitud';
 import { estadosDeSolicitud } from '../../../../../../src/assets/json/estados_solicitud';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
 @Component({
   selector: 'app-editar-solicitud',
@@ -24,7 +24,8 @@ export class EditarSolicitudComponent implements OnInit {
 
   constructor(
     private solicitudServices: SolicitudService,
-    private router: Router
+    private router: Router,
+    private modalNotificaciones: ModalNotificaciones
   ) {
     this.tiposSolicitudList = tiposDeSolicitud;
     this.estadosSolicitudList = estadosDeSolicitud;
@@ -35,40 +36,42 @@ export class EditarSolicitudComponent implements OnInit {
   }
 
   editar() {
-    Swal.fire({
-      title: 'Estas seguro de actualizar la solicitud',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, actualizar',
-      cancelButtonText: 'no, Cancelar!!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.solicitudServices.editar(this.envioForm.value).subscribe(
-          (response) => {
-            this.id = this.envioForm.value.id;
-            if (response.valor) {
-              Swal.fire({
-                icon: 'success',
-                title: `Se actualizado el radicado  # ${this.envioForm.value.id}`,
-              });
-              this.envioForm.reset();
+    this.modalNotificaciones
+      .modalConConfirmacion(
+        'Estas seguro de actualizar la solicitud',
+        'warning',
+        true,
+        '#3085d6',
+        '#d33',
+        'Si, crealo',
+        'no, Cancelar!!'
+      )
+      .then((respuestaConfirmacion) => {
+        if (respuestaConfirmacion) {
+          this.solicitudServices.editar(this.envioForm.value).subscribe(
+            (response) => {
+              this.id = response.valor;
+              if (response.valor) {
+                this.modalNotificaciones.modalBasico(
+                  `Se actualizado el radicado  # ${this.envioForm.value.id}`,
+                  'success'
+                );
+                this.envioForm.reset();
+
+                setTimeout(() => {
+                  this.irAListarSolicitudes();
+                }, 1000);
+              }
+            },
+            (e) => {
+              this.modalNotificaciones.modalBasico(
+                e.error ? e.error.mensaje : e.statusText,
+                'warning'
+              );
             }
-            setTimeout(() => {
-              this.irAListarSolicitudes();
-            }, 1000);
-          },
-          (e) => {
-            Swal.fire({
-              icon: 'error',
-              title: e.error ? e.error.mensaje : e.statusText,
-            });
-            this.error = e.error;
-          }
-        );
-      }
-    });
+          );
+        }
+      });
   }
 
   limpiar() {

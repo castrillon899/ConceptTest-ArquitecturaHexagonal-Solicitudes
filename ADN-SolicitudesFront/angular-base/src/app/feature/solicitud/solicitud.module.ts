@@ -8,6 +8,7 @@ import { SharedModule } from '@shared/shared.module';
 import { SolicitudService } from './shared/service/solicitud.service';
 import { EditarSolicitudComponent } from './components/editar-solicitud/editar-solicitud.component';
 import { HttpService } from '@core/services/http.service';
+import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { HttpService } from '@core/services/http.service';
   ],
   imports: [SolicitudRoutingModule, SharedModule],
 
-  providers: [HttpService, SolicitudService],
+  providers: [HttpService, SolicitudService,ModalNotificaciones],
 })
 export class SolicitudModule {}

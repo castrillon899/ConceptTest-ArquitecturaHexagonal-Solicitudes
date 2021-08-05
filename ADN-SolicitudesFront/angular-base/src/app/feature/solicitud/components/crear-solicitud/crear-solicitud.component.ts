@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { tiposDeSolicitud } from '../../../../../../src/assets/json/tipos_solicitud';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
 @Component({
   selector: 'app-crear-solicitud',
@@ -21,7 +21,8 @@ export class CrearSolicitudComponent implements OnInit {
 
   constructor(
     private solicitudServices: SolicitudService,
-    private router: Router
+    private router: Router,
+    private modalNotificaciones: ModalNotificaciones
   ) {
     this.tiposSolicitudList = tiposDeSolicitud;
   }
@@ -31,40 +32,42 @@ export class CrearSolicitudComponent implements OnInit {
   }
 
   crear() {
-    Swal.fire({
-      title: 'Estas seguro de crear la solicitud',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, crealo',
-      cancelButtonText: 'no, Cancelar!!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.solicitudServices.crear(this.envioForm.value).subscribe(
-          (response) => {
-            this.id = response.valor;
-            if (response.valor) {
-              Swal.fire({
-                icon: 'success',
-                title: `Se creo el radicado  # ${response.valor}`,
-              });
-              this.envioForm.reset();
+    this.modalNotificaciones
+      .modalConConfirmacion(
+        'Estas seguro de crear la solicitud',
+        'warning',
+        true,
+        '#3085d6',
+        '#d33',
+        'Si, crealo',
+        'no, Cancelar!!'
+      )
+      .then((respuestaConfirmacion) => {
+        if (respuestaConfirmacion) {
+          this.solicitudServices.crear(this.envioForm.value).subscribe(
+            (response) => {
+              this.id = response.valor;
+              if (response.valor) {
+                this.modalNotificaciones.modalBasico(
+                  `Se creo el radicado  # ${response.valor}`,
+                  'success'
+                );
+                this.envioForm.reset();
+
+                setTimeout(() => {
+                  this.irAListarSolicitudes();
+                }, 1000);
+              }
+            },
+            (e) => {
+              this.modalNotificaciones.modalBasico(
+                `No se puedo crear la notificacion ${e}`,
+                'warning'
+              );
             }
-            setTimeout(() => {
-              this.irAListarSolicitudes();
-            }, 1000);
-          },
-          (e) => {
-            Swal.fire({
-              icon: 'error',
-              title: e.error ? e.error.mensaje : e.statusText,
-            });
-            this.error = e.error;
-          }
-        );
-      }
-    });
+          );
+        }
+      });
   }
 
   limpiar() {
