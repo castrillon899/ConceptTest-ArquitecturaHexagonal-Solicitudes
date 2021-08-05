@@ -43,7 +43,7 @@ export class EditarSolicitudComponent implements OnInit {
         true,
         '#3085d6',
         '#d33',
-        'Si, crealo',
+        'Si, actualizar',
         'no, Cancelar!!'
       )
       .then((respuestaConfirmacion) => {
