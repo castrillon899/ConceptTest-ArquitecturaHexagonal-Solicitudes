@@ -19,7 +19,6 @@ import { ModalNotificaciones } from '@core/services/modal-notificaciones.service
     EditarSolicitudComponent,
   ],
   imports: [SolicitudRoutingModule, SharedModule],
-
-  providers: [HttpService, SolicitudService,ModalNotificaciones],
+  providers: [HttpService, SolicitudService, ModalNotificaciones],
 })
 export class SolicitudModule {}
