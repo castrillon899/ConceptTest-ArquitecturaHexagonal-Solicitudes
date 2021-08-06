@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { Solicitud } from '@solicitud/shared/model/solicitud';
+import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
 describe('ListarSolicitudComponent', () => {
   let component: ListarSolicitudComponent;
@@ -16,7 +17,8 @@ describe('ListarSolicitudComponent', () => {
   const listaSolicitudes: Solicitud[] = [
     {
       id: 1,
-      descripcion: 'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
+      descripcion:
+        'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
       tipoDeSolicitud: 'QUEJA',
       estado: 'EN_PROGRESO',
       fechaCreacion: '2021-07-30 06:55:14',
@@ -27,11 +29,12 @@ describe('ListarSolicitudComponent', () => {
       respuestaDeLaSolicitud: 'Se esta revisando factura',
       idCliente: 1233,
       clienteCelularContacto: 3004177487,
-      respuestaSolicitud: 'atendiendo'
+      respuestaSolicitud: 'atendiendo',
     },
     {
       id: 2,
-      descripcion: 'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
+      descripcion:
+        'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
       tipoDeSolicitud: 'QUEJA',
       estado: 'EN_PROGRESO',
       fechaCreacion: '2021-07-30 06:55:14',
@@ -42,11 +45,12 @@ describe('ListarSolicitudComponent', () => {
       respuestaDeLaSolicitud: 'Se esta revisando factura',
       idCliente: 1233,
       clienteCelularContacto: 3004177487,
-      respuestaSolicitud: 'atendiendo'
+      respuestaSolicitud: 'atendiendo',
     },
     {
       id: 3,
-      descripcion: 'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
+      descripcion:
+        'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
       tipoDeSolicitud: 'QUEJA',
       estado: 'EN_PROGRESO',
       fechaCreacion: '2021-07-30 06:55:14',
@@ -57,11 +61,12 @@ describe('ListarSolicitudComponent', () => {
       respuestaDeLaSolicitud: 'Se esta revisando factura',
       idCliente: 1233,
       clienteCelularContacto: 3004177487,
-      respuestaSolicitud: 'atendiendo'
+      respuestaSolicitud: 'atendiendo',
     },
     {
       id: 4,
-      descripcion: 'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
+      descripcion:
+        'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
       tipoDeSolicitud: 'QUEJA',
       estado: 'EN_PROGRESO',
       fechaCreacion: '2021-07-30 06:55:14',
@@ -72,11 +77,12 @@ describe('ListarSolicitudComponent', () => {
       respuestaDeLaSolicitud: 'Se esta revisando factura',
       idCliente: 1233,
       clienteCelularContacto: 3004177487,
-      respuestaSolicitud: 'atendiendo'
+      respuestaSolicitud: 'atendiendo',
     },
     {
       id: 5,
-      descripcion: 'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
+      descripcion:
+        'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
       tipoDeSolicitud: 'QUEJA',
       estado: 'EN_PROGRESO',
       fechaCreacion: '2021-07-30 06:55:14',
@@ -87,30 +93,25 @@ describe('ListarSolicitudComponent', () => {
       respuestaDeLaSolicitud: 'Se esta revisando factura',
       idCliente: 1233,
       clienteCelularContacto: 3004177487,
-      respuestaSolicitud: 'atendiendo'
-    }
+      respuestaSolicitud: 'atendiendo',
+    },
   ];
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ListarSolicitudComponent],
-      imports: [
-        CommonModule,
-        HttpClientModule,
-        RouterTestingModule
-      ],
-      providers: [SolicitudService, HttpService]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ListarSolicitudComponent],
+        imports: [CommonModule, HttpClientModule, RouterTestingModule],
+        providers: [SolicitudService, HttpService, ModalNotificaciones],
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListarSolicitudComponent);
     component = fixture.componentInstance;
     solicitudService = TestBed.inject(SolicitudService);
-    spyOn(solicitudService, 'consultar').and.returnValue(
-      of(listaSolicitudes)
-    );
+    spyOn(solicitudService, 'consultar').and.returnValue(of(listaSolicitudes));
     fixture.detectChanges();
   });
 

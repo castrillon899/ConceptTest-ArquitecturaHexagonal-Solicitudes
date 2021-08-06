@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
+import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
 describe('CrearSolicitudComponent', () => {
   let component: CrearSolicitudComponent;
@@ -25,7 +26,7 @@ describe('CrearSolicitudComponent', () => {
           ReactiveFormsModule,
           FormsModule,
         ],
-        providers: [SolicitudService, HttpService],
+        providers: [SolicitudService, HttpService, ModalNotificaciones],
       }).compileComponents();
     })
   );

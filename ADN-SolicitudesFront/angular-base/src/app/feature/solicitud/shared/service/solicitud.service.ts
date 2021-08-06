@@ -9,6 +9,11 @@ export class SolicitudService {
 
   solicitudActiva: Solicitud;
 
+  seleccionarSolicitud(solicitudActiva: Solicitud) {
+    this.solicitudActiva = solicitudActiva;
+    return this.solicitudActiva;
+  }
+
   public consultar() {
     return this.http.doGet<Solicitud[]>(
       `${environment.endpoint}/api/v1/solicitudes`,
@@ -45,7 +50,7 @@ export class SolicitudService {
     return this.http.doPut<any, any>(
       `${environment.endpoint}/api/v1/solicitudes/${solicitud.id}`,
       objectUpdate,
-      this.http.optsName('cancelar solicitud')
+      this.http.optsName('editar solicitud')
     );
   }
 }
