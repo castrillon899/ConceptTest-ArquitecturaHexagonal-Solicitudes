@@ -36,7 +36,7 @@ public class ComandoControladorSolicitudTest {
 	private MockMvc mocMvc;
 	
 	
-	@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
+	@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)
 	@Test
 	public void crear() throws Exception {
 	
@@ -50,7 +50,7 @@ public class ComandoControladorSolicitudTest {
 		andExpect(status().isOk());
 	}
 
-	@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
+	@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)
 	@Test
 	public void actualizar() throws Exception {
 		// arrange
