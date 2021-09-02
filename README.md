@@ -1,3 +1,8 @@
+
+
+#### Prueba de concepto de solicitudes
+
+
 Este bloque contiene la estructura necesaria para construir un proyecto en java favoreciendo el enfoque de DDD. 
 
 Los principales patrones y estilos de arquitectura que guían este bloque son
