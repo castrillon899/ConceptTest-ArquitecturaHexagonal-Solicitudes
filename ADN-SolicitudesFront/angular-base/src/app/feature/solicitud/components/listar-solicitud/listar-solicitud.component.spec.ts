@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { Solicitud } from '@solicitud/shared/model/solicitud';
 import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
-describe('ListarSolicitudComponent', () => {
+describe('SolicitudListarComponent', () => {
   let component: ListarSolicitudComponent;
   let fixture: ComponentFixture<ListarSolicitudComponent>;
   let solicitudService: SolicitudService;
@@ -115,7 +115,7 @@ describe('ListarSolicitudComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should listar Solicitudes', () => {
     expect(component).toBeTruthy();
   });
 });

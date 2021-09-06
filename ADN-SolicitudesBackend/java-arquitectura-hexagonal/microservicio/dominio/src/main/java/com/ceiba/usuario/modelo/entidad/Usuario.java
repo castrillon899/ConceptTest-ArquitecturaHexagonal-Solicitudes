@@ -6,35 +6,69 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
 @ToString
 public class Usuario {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
-    private static final String LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La clave debe tener una longitud mayor o igual a %s";
-    private static final String SE_DEBE_INGRESAR_LA_CLAVE = "Se debe ingresar la clave";
-    private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
+    private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el primer nombre de usuario";
+    private static final String SE_DEBE_INGRESAR_EL_APELLIDO_DE_USUARIO = "Se debe ingresar el primer apellido de usuario";
+    private static final String SE_DEBE_INGRESAR_EL_TIPO_DE_DOCUMENTO = "Se debe ingresar el tipo de documento";
+    private static final String SE_DEBE_INGRESAR_EL_DOCUMENTO = "Se debe ingresar el doucumento";
+    private static final String SE_DEBE_INGRESAR_ADMINISTRADORA_PENSION = "Se debe ingresar la administradora de pension";
+    private static final String SE_DEBE_INGRESAR_ADMINISTRADORA_SALUD = "Se debe ingresar la EPS";
+    private static final String SE_DEBE_INGRESAR_FECHA_AFILIACION = "Se debe ingresar la fecha de afiliacion a salud";
+    private static final String SE_DEBE_INGRESAR_FECHA_AFILIACION_PENSION = "Se debe ingresar la fecha de afiliacion a pension";
 
-    private static final int LONGITUD_MINIMA_CLAVE = 4;
 
+ 
+    
+    
     private Long id;
-    private String nombre;
-    private String clave;
-    private LocalDateTime fechaCreacion;
+	private String primerNombre;
+	private String segundoNombre;
+	private String primerApellido;
+	private String segundoApellido;
+	private String tipoDeDocumento;
+	private String documento;
+	private String administradoraSalud;
+	private LocalDateTime fechaAfiliacionASalud;
+	private String administradoraDePension;
+	private LocalDateTime fechaAfiliacionAPension;
+	
+	
+	
+	public Usuario(Long id, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
+			String tipoDeDocumento, String documento, String administradoraSalud, LocalDateTime fechaAfiliacionASalud,
+			String administradoraDePension, LocalDateTime fechaAfiliacionAPension) {
+	
+		validarObligatorio(primerNombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
+	    validarObligatorio(primerApellido, SE_DEBE_INGRESAR_EL_APELLIDO_DE_USUARIO);
+        validarObligatorio(tipoDeDocumento, SE_DEBE_INGRESAR_EL_TIPO_DE_DOCUMENTO);
+	    validarObligatorio(documento, SE_DEBE_INGRESAR_EL_DOCUMENTO);
+	    validarObligatorio(administradoraSalud, SE_DEBE_INGRESAR_ADMINISTRADORA_SALUD);
+	    validarObligatorio(fechaAfiliacionASalud, SE_DEBE_INGRESAR_FECHA_AFILIACION);
+	    validarObligatorio(administradoraDePension, SE_DEBE_INGRESAR_ADMINISTRADORA_PENSION);
+	    validarObligatorio(fechaAfiliacionASalud, SE_DEBE_INGRESAR_FECHA_AFILIACION_PENSION);
+	        
 
-    public Usuario(Long id,String nombre, String clave,LocalDateTime fechaCreacion) {
-        validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
-        validarObligatorio(clave, SE_DEBE_INGRESAR_LA_CLAVE);
-        validarLongitud(clave, LONGITUD_MINIMA_CLAVE, String.format(LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A,LONGITUD_MINIMA_CLAVE));
-        validarObligatorio(fechaCreacion, SE_DEBE_INGRESAR_LA_FECHA_CREACION);
-
-        this.id = id;
-        this.nombre = nombre;
-        this.clave = clave;
-        this.fechaCreacion = fechaCreacion;
-    }
+		
+		this.id = id;
+		this.primerNombre = primerNombre;
+		this.segundoNombre = segundoNombre;
+		this.primerApellido = primerApellido;
+		this.segundoApellido = segundoApellido;
+		this.tipoDeDocumento = tipoDeDocumento;
+		this.documento = documento;
+		this.administradoraSalud = administradoraSalud;
+		this.fechaAfiliacionASalud = fechaAfiliacionASalud;
+		this.administradoraDePension = administradoraDePension;
+		this.fechaAfiliacionAPension = fechaAfiliacionAPension;
+	}
+    
+	
+	
+    
 
 }

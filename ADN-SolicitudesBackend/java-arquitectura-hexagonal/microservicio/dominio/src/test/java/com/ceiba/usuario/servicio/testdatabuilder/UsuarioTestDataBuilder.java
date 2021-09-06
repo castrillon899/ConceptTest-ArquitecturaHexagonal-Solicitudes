@@ -29,6 +29,7 @@ public class UsuarioTestDataBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fecha);
+
+        return null;
     }
 }

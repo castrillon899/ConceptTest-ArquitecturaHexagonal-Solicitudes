@@ -10,7 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SolicitudService } from '@solicitud/shared/service/solicitud.service';
 import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
-describe('CrearSolicitudComponent', () => {
+describe('SolicitudCrearComponent', () => {
   let component: CrearSolicitudComponent;
   let fixture: ComponentFixture<CrearSolicitudComponent>;
   let solicitudService: SolicitudService;

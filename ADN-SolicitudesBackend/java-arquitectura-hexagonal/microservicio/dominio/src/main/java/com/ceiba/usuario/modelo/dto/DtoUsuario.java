@@ -8,9 +8,17 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class DtoUsuario {
-    private Long id;
-    private String nombre;
-    private String clave;
-    private LocalDateTime fechaCreacion;
 
+    
+	private String primerNombre;
+	private String segundoNombre;
+	private String primerApellido;
+	private String segundoApellido;
+	private String tipoDeDocumento;
+	private String documento;
+	private String administradoraSalud;
+	private LocalDateTime fechaAfiliacionASalud;
+	private String administradoraDePension;
+	private LocalDateTime fechaAfiliacionAPension;
+    
 }

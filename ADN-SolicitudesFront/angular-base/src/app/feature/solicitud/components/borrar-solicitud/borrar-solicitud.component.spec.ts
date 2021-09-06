@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BorrarSolicitudComponent } from './borrar-solicitud.component';
 
-describe('BorrarSolicitudComponent', () => {
+describe('SolicitudBorrarComponent', () => {
   let component: BorrarSolicitudComponent;
   let fixture: ComponentFixture<BorrarSolicitudComponent>;
 

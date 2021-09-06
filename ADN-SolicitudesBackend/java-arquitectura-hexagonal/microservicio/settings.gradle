@@ -1,4 +1,4 @@
-rootProject.name = 'solicitudes'
+rootProject.name = 'usuarios'
 
 include ':infraestructura'
 include ':aplicacion'

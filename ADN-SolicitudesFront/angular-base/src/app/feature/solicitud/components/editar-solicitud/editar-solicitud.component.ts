@@ -65,7 +65,7 @@ export class EditarSolicitudComponent implements OnInit {
             },
             (e) => {
               this.modalNotificaciones.modalBasico(
-                e.error ? e.error.mensaje : e.statusText,
+                e.error ? e.error.mensaje : e,
                 'warning'
               );
             }

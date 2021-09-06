@@ -10,7 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Solicitud } from '@solicitud/shared/model/solicitud';
 import { of } from 'rxjs';
 
-describe('EditarSolicitudComponent', () => {
+describe('SolicitudEditarComponent', () => {
   let component: EditarSolicitudComponent;
   let fixture: ComponentFixture<EditarSolicitudComponent>;
   let solicitudService: SolicitudService;
@@ -36,7 +36,7 @@ describe('EditarSolicitudComponent', () => {
     const solicitud: Solicitud = {
       id: 1,
       descripcion:
-        'la usuaria manifiesta inconformidad con la factura recibida por favor $200.000',
+        'Cliente asegura que el pedido no le ha llegado',
       tipoDeSolicitud: 'QUEJA',
       estado: 'EN_PROGRESO',
       fechaCreacion: '2021-07-30 06:55:14',
@@ -49,9 +49,10 @@ describe('EditarSolicitudComponent', () => {
       clienteCelularContacto: 3004177487,
       respuestaSolicitud: 'atendiendo',
     };
-    solicitudService.seleccionarSolicitud(solicitud);
-    spyOn(solicitudService, 'editar').and.returnValue(of({ valor: 1 }));
+    solicitudService.seleccionarSolicitud(solicitud);    
+    spyOn(solicitudService, 'editar').and.returnValues(of({ valor: 1 }));
     fixture.detectChanges();
+ 
   });
 
   it('should update', () => {

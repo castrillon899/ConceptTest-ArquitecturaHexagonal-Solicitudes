@@ -20,7 +20,7 @@ dependencies {
 
 	implementation project.ext.apachecommons
 	implementation project.ext.springbootjdbc
-	runtimeOnly project.ext.db
+	
 	testImplementation project.ext.flywaytest
 
 	
